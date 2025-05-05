@@ -2,7 +2,7 @@
  AI Voice Assistant for handling customer support tickets
 
  ## How to Run Demo
-First, clone the repo by running the command:
+First, clone the repo by running the following command:
 
 ```
 git clone https://github.com/youssef-qteishat/CRM_AI_Voice_Assistant.git
@@ -14,7 +14,7 @@ Then, navigate to the project directory in your terminal and run the demo.py fil
 python demo.py
 ```
 
-The demo file uses a pre-recorded sample mp3 file, feel free to record your own. the React client app prompts the user to record their own message.
+The demo file uses a pre-recorded sample mp3 file, feel free to record and upload your own for debugging. The React client app prompts the user to record a message in real time.
 
 ## What to work on next
 
