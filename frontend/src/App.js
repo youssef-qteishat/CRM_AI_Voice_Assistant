@@ -1,10 +1,10 @@
 import React from 'react';
 import Recorder from './Recorder';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-center mt-4 text-xl font-semibold">Voice Assistant</h1>
+    <div className="App min-h-screen w-full flex items-center justify-center">
       <Recorder />
     </div>
   );

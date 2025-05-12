@@ -1,6 +1,8 @@
 import os
 import json
 import openai
+import ffmpeg
+from tempfile import NamedTemporaryFile
 from openai import OpenAIError
 from dotenv import load_dotenv
 from deepgram import DeepgramClient, PrerecordedOptions, SpeakOptions
@@ -21,17 +23,22 @@ openai_client = openai.OpenAI(
 
 # Define the system prompt for OpenAI
 system_prompt = """
-You are a helpful and friendly customer service assistant for an electronics warehouse.
-Your goal is to help customers with issues like:
-- Billing questions
-- Getting updates on orders
-- Explaining contents of each order (number of the items and type of items delivered)
+You are a helpful and friendly AI assistant for a user going through the process of moving.
 
-Maintain a polite and professional tone in your responses. Always make the customer feel valued and heard.
+Each box has the following details:
+- box number
+- box size (small, medium, large, extra large)
+- whether the box is fragile or not (true or false value)
+- where the box's contents are from in the house (master bedroom, bedroom, living room, dinning room, kitchen, bathroom, garage, or attic)
+- description of the contents
 
-Always spell out dates and abbriviations for states and street names. And convert UTC time to Pacific Standard Time.
+Your goal is to help users with the following:
+- keep track of boxes and their contents
+- keep track on the total number of boxes and from which area in the house they are from
 
-Always express the cost of a given order as a dollar amount.
+Maintain a polite and professional tone in your responses. Always make the user feel valued and heard.
+
+If you box is marked is not fargile, don't mention it in the reponse. If you are mentioning the date a box was packed make sure to spell it out. If you are mentioning the id, refer to it as the number (ex. box number 12).
 """
 
 # Set Deepgram options for TTS and STT
@@ -52,30 +59,31 @@ speak_options = SpeakOptions(
 )
 
 
-def ask_openai(prompt, order_data=None):
+def ask_openai(conversation_history):
     """
     Send OpenAI API a prompt, returns a response back.
     Optionally includes order data to help the assistant provide informed responses.
     """
     try:
-        user_prompt = prompt
-
-        if order_data:
-            formatted_data = json.dumps(order_data, indent=2)
-            user_prompt = f"The following is customer order data:\n{formatted_data}\n\nCustomer says: {prompt}"
-
         response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
-            ],
+            model="gpt-4-1106-preview",
+            messages=conversation_history,
             temperature=0.7
         )
-        return response.choices[0].message.content
+        agent_reply = response.choices[0].message.content
+        conversation_history.append({"role": "assistant", "content": agent_reply})
+        return agent_reply, conversation_history
     except OpenAIError as e:
         return f"An error occurred: {e}"
 
+def convert_webm_to_wav(webm_bytes):
+    with NamedTemporaryFile(suffix=".webm") as temp_in, NamedTemporaryFile(suffix=".wav", delete=False) as temp_out:
+        temp_in.write(webm_bytes)
+        temp_in.flush()
+
+        ffmpeg.input(temp_in.name).output(temp_out.name).run(overwrite_output=True)
+        with open(temp_out.name, "rb") as f:
+            return f.read()
 
 def get_transcript(payload, options=text_options):
     """

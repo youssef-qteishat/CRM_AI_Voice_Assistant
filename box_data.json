@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "size": "medium",
+    "room": "kitchen",
+    "fragile": true,
+    "description": "Set of wine glasses, ceramic plates, and a teapot",
+    "packed_date": "2024-04-01"
+  },
+  {
+    "id": 2,
+    "size": "large",
+    "room": "garage",
+    "fragile": false,
+    "description": "Power tools, extension cords, and a toolbox",
+    "packed_date": "2024-04-02"
+  },
+  {
+    "id": 3,
+    "size": "small",
+    "room": "bathroom",
+    "fragile": false,
+    "description": "Toiletries, extra soap bars, and a hairdryer",
+    "packed_date": "2024-04-03"
+  },
+  {
+    "id": 4,
+    "size": "extra large",
+    "room": "living room",
+    "fragile": true,
+    "description": "Framed artwork, decorative vases, and a glass lamp",
+    "packed_date": "2024-04-04"
+  },
+  {
+    "id": 5,
+    "size": "medium",
+    "room": "master bedroom",
+    "fragile": false,
+    "description": "Books, notebooks, and a desk organizer",
+    "packed_date": "2024-04-05"
+  },
+  {
+    "id": 6,
+    "size": "large",
+    "room": "attic",
+    "fragile": false,
+    "description": "Seasonal decorations and unused blankets",
+    "packed_date": "2024-04-06"
+  },
+  {
+    "id": 7,
+    "size": "small",
+    "room": "dinning room",
+    "fragile": true,
+    "description": "Crystal candle holders and porcelain serving trays",
+    "packed_date": "2024-04-07"
+  },
+  {
+    "id": 8,
+    "size": "extra large",
+    "room": "living room",
+    "fragile": false,
+    "description": "Throw pillows, board games, and an old DVD player",
+    "packed_date": "2024-04-08"
+  },
+  {
+    "id": 9,
+    "size": "medium",
+    "room": "bathroom",
+    "fragile": true,
+    "description": "Glass jars with cotton balls, skincare products, and perfumes",
+    "packed_date": "2024-04-09"
+  },
+  {
+    "id": 10,
+    "size": "small",
+    "room": "kitchen",
+    "fragile": false,
+    "description": "Canned goods, spices, and cooking utensils",
+    "packed_date": "2024-04-10"
+  },
+  {
+    "id": 11,
+    "size": "large",
+    "room": "garage",
+    "fragile": true,
+    "description": "Glass light fixtures and car maintenance supplies",
+    "packed_date": "2024-04-11"
+  },
+  {
+    "id": 12,
+    "size": "medium",
+    "room": "master bedroom",
+    "fragile": true,
+    "description": "Jewelry boxes, small picture frames, and perfume bottles",
+    "packed_date": "2024-04-12"
+  },
+  {
+    "id": 13,
+    "size": "extra large",
+    "room": "attic",
+    "fragile": false,
+    "description": "Old clothes, photo albums, and board games",
+    "packed_date": "2024-04-13"
+  },
+  {
+    "id": 14,
+    "size": "small",
+    "room": "dinning room",
+    "fragile": false,
+    "description": "Table linens, napkin rings, and salt shakers",
+    "packed_date": "2024-04-14"
+  },
+  {
+    "id": 15,
+    "size": "large",
+    "room": "living room",
+    "fragile": false,
+    "description": "Books, DVDs, and video game consoles",
+    "packed_date": "2024-04-15"
+  }
+]
